@@ -1,5 +1,4 @@
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
 public class Palindromecheckerapp {
 
@@ -9,15 +8,15 @@ public class Palindromecheckerapp {
         System.out.print("Enter a string: ");
         String str = sc.nextLine();
 
-        Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
 
         for(char c : str.toCharArray())
-            stack.push(c);
+            queue.add(c);
 
         String rev = "";
 
-        while(!stack.isEmpty())
-            rev += stack.pop();
+        while(!queue.isEmpty())
+            rev = queue.remove() + rev;
 
         if(str.equals(rev))
             System.out.println("Palindrome");
