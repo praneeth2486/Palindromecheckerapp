@@ -1,27 +1,5 @@
 import java.util.Scanner;
-import java.util.Stack;
-
-interface Strategy {
-    boolean check(String str);
-}
-
-class StackStrategy implements Strategy {
-
-    public boolean check(String str) {
-
-        Stack<Character> stack = new Stack<>();
-
-        for(char c : str.toCharArray())
-            stack.push(c);
-
-        for(char c : str.toCharArray()) {
-            if(c != stack.pop())
-                return false;
-        }
-
-        return true;
-    }
-}
+import java.util.stream.IntStream;
 
 public class Palindromecheckerapp {
 
@@ -31,9 +9,11 @@ public class Palindromecheckerapp {
         System.out.print("Enter a string: ");
         String str = sc.nextLine();
 
-        Strategy s = new StackStrategy();
+        boolean result =
+                IntStream.range(0, str.length()/2)
+                        .allMatch(i -> str.charAt(i) == str.charAt(str.length()-1-i));
 
-        if(s.check(str))
+        if(result)
             System.out.println("Palindrome");
         else
             System.out.println("Not Palindrome");
