@@ -1,10 +1,8 @@
 import java.util.Scanner;
 
-public class Palindromecheckerapp {
+class PalindromeChecker {
 
-    static boolean check(String str) {
-
-        str = str.replaceAll("\\s+", "").toLowerCase();
+    boolean check(String str) {
 
         int l = 0;
         int r = str.length() - 1;
@@ -19,14 +17,19 @@ public class Palindromecheckerapp {
 
         return true;
     }
+}
+
+public class Palindromecheckerapp {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a sentence: ");
+        System.out.print("Enter a string: ");
         String str = sc.nextLine();
 
-        if(check(str))
+        PalindromeChecker p = new PalindromeChecker();
+
+        if(p.check(str))
             System.out.println("Palindrome");
         else
             System.out.println("Not Palindrome");
