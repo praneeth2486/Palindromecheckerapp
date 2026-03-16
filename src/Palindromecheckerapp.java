@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Palindromecheckerapp {
 
@@ -6,17 +6,9 @@ public class Palindromecheckerapp {
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a string: ");
-        String str = sc.nextLine();
+        String str = sc.nextLine().toLowerCase();
 
-        Queue<Character> queue = new LinkedList<>();
-
-        for(char c : str.toCharArray())
-            queue.add(c);
-
-        String rev = "";
-
-        while(!queue.isEmpty())
-            rev = queue.remove() + rev;
+        String rev = new StringBuilder(str).reverse().toString();
 
         if(str.equals(rev))
             System.out.println("Palindrome");
