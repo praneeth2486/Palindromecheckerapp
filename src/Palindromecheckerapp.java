@@ -5,14 +5,23 @@ public class Palindromecheckerapp {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a sentence: ");
-        String str = sc.nextLine();
+        System.out.print("Enter a string: ");
+        char[] arr = sc.nextLine().toCharArray();
 
-        str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int l = 0;
+        int r = arr.length - 1;
+        boolean flag = true;
 
-        String rev = new StringBuilder(str).reverse().toString();
+        while(l < r) {
+            if(arr[l] != arr[r]) {
+                flag = false;
+                break;
+            }
+            l++;
+            r--;
+        }
 
-        if(str.equals(rev))
+        if(flag)
             System.out.println("Palindrome");
         else
             System.out.println("Not Palindrome");
